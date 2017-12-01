@@ -79,6 +79,7 @@ var nextQuestion;
 //Creates Question with answer buttons
 
 function createQuestion() {
+    if (currentQuestion < triviaQuestions.length){
     clearInterval(nextQuestion)
     emptyDivs()
     timeLeft = 10
@@ -93,12 +94,17 @@ function createQuestion() {
     }
     $(".timer").text("Time remaining: " + timeLeft + "s")
     count = setInterval(timer, 1000)
+    }
 }
 
 function emptyDivs(){
+    $(".instruction").empty()
+    $(".start").empty()
     $(".question").empty()
     $(".answer").empty()
     $(".picture").empty()
+    $("#correct").empty()
+    $("#incorect").empty()
 }
 
 $(".answer").on("click","#poss-answer", function() {
@@ -152,18 +158,28 @@ function correctIncorrect (){
 function gameOver() {
         if(currentQuestion >= triviaQuestions.length){
         emptyDivs()
-        currentQuestion = 0;
         $(".timer").empty()
         $("#correct").text("Number correct: " + correctQuestions)
         $("#incorrect").text("Number incorrect: " + incorrectQuestions)
         var restartButton = $("<button>")
-        restartButton.attr("#start-button")
+        restartButton.attr("id", "restart-button")
         restartButton.text("Play again?")
         $(".start").append(restartButton)
         }
 }
+
 $(".start").on("click","#start-button", function() {
     $(".instruction").empty()
     $(".start").empty()
     createQuestion()
+})
+
+$(".start").on("click","#restart-button", function() {
+    $(".instruction").empty()
+    $(".start").empty()
+    currentQuestion = 0
+    correctQuestions = 0
+    incorrectQuestions = 0
+    createQuestion()
+    console.log("what")
 })
