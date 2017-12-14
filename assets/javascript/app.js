@@ -104,7 +104,7 @@ function emptyDivs(){
     $(".answer").empty()
     $(".picture").empty()
     $("#correct").empty()
-    $("#incorect").empty()
+    $("#incorrect").empty()
 }
 
 $(".answer").on("click","#poss-answer", function() {
