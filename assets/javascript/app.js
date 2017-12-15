@@ -71,7 +71,7 @@ var incorrectQuestions = 0
 var score = 0 //Calculate percentage based on correct/incorrect
 var currentQuestion = 0
 var chosenAnswer = ""
-var timeLeft = 10
+var timeLeft = 15
 var count;
 var nextQuestion;
 //Various function calls
@@ -128,7 +128,7 @@ function correctAnswer() {
     $(".question").text("You were correct!")
     $(".answer").text(triviaQuestions[currentQuestion].correct)
     $(".picture").html("<img src='" + triviaQuestions[currentQuestion].img +"' class = 'img-fluid'>")
-    nextQuestion = setInterval(createQuestion,1000)
+    nextQuestion = setInterval(createQuestion, 5 * 1000)
 }
 
 function displayCorrect(){
@@ -136,7 +136,7 @@ function displayCorrect(){
     $(".question").text("The correct answer was:")
     $(".answer").text(triviaQuestions[currentQuestion].correct)
     $(".picture").html("<img src='" + triviaQuestions[currentQuestion].img +"' class = 'img-fluid'>")
-    nextQuestion = setInterval(createQuestion,1000)
+    nextQuestion = setInterval(createQuestion,5 * 1000)
 }
 
 function correctIncorrect (){
